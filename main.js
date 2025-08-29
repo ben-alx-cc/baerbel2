@@ -95,6 +95,8 @@ const waterMat = new THREE.ShaderMaterial({
   transparent: false,
   dithering: true
 });
+// Ensure extensions property does not auto-enable derivatives
+waterMat.extensions = { derivatives: false, fragDepth: false, drawBuffers: false, shaderTextureLOD: false };
 
 const waterGeo = new THREE.PlaneGeometry(400, 400, 256, 256);
 const water = new THREE.Mesh(waterGeo, waterMat);
