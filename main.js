@@ -42,13 +42,10 @@ const waterUniforms = {
   uFlow: { value: new THREE.Vector2(0.08, 0.02) }
 };
 
-// Ensure OES_standard_derivatives is available (iOS Safari)
-renderer.getContext().getExtension('OES_standard_derivatives');
 
 const waterMat = new THREE.ShaderMaterial({
   uniforms: waterUniforms,
   vertexShader: `
-    #extension GL_OES_standard_derivatives : enable
     varying vec3 vWorldPos;
     uniform float uTime;
     uniform float uRippleAmp;
@@ -77,7 +74,6 @@ const waterMat = new THREE.ShaderMaterial({
     }
   `,
   fragmentShader: `
-    #extension GL_OES_standard_derivatives : enable
     varying vec3 vWorldPos;
     uniform vec3 uColorDeep;
     uniform vec3 uColorShallow;
